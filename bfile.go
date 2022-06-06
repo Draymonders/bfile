@@ -20,10 +20,10 @@ const (
 // Pager is a page buffer that is backed by an os.File
 type Pager struct {
 	file   *os.File
-	pgsize int64
-	pgmax  int64
+	pgsize int64 // all pages are this size
+	pgmax  int64 // max number of pages per shard
 	mu     sync.RWMutex
-	size   int64
+	size   int64 // file real size
 	shards []shard
 }
 
